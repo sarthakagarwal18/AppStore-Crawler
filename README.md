@@ -1,5 +1,6 @@
 # AppStore-Crawler
-A Web Crawler which extracts the names of different Apps, its Developer, and its Price.
+A Python Web Crawler which extracts the names of different Apps, its Developer, and its Price.
+Made for learning purposes :)
 
 ####Installation
     
