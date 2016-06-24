@@ -21,18 +21,14 @@ class AppCrawler:
 			current_links = []
 			for link in self.depth_links[self.current_depth]:
 				current_app = self.get_app_from_link(link)
-				# current_app.links is a list..so if we append it
-				# we get a list of list, which is complicating
-				# We just add it to the current_links using extend
 				current_links.extend(current_app.links)
 				self.apps.append(current_app)
 				# if we make many requests at the same time, we might get blacklisted.
-				# hence requests are made every 2 sec
+				# hence requests are made every 2 sec. Drawback:Makes the Crawler Slow.
+				# Comment it out for use.
 				# time.sleep(2)
 			self.current_depth += 1
 			self.depth_links.append(current_links)
-
-		# return
 
 
 	def get_app_from_link(self, link):
@@ -45,10 +41,8 @@ class AppCrawler:
 			developer = tag.find('h2').string;
 		price = soup.find('div', {'itemprop': 'price'}).string
 		link_name = soup.find_all('div', {'class': 'center-stack'})
-		# i=0;
 		for link in link_name:
 			app_link = link.find_all('a', {'class': 'name'})
-		i=0
 		links = []
 		for linked in app_link:
 			links.append(linked.get('href'))
